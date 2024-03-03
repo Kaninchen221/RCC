@@ -12,7 +12,7 @@ import RCC
 import QtQuick.Layouts
 
 Rectangle {
-    id: rectangle
+    id: root
     width: Constants.width
     height: Constants.height
 
@@ -53,7 +53,13 @@ Rectangle {
         height: 107
         text1Text: "Listen"
 
-        onSwitchOn: console.log("Listen switch on")
-        onSwitchOff: console.log("Listen switch off")
+        onSwitchOn: {
+            RCCController.startListening()
+            console.log("Listen switch on")
+        }
+        onSwitchOff: {
+            RCCController.stopListening()
+            console.log("Listen switch off")
+        }
     }
 }

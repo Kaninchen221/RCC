@@ -13,7 +13,11 @@ if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
 endif()
 
-qt_add_executable(RCCApp src/main.cpp)
+qt_add_executable(RCCApp src/main.cpp
+    src/rcccontroller.h src/rcccontroller.cpp)
+	
+# Fix: qml type regitrations : no such a file or directory
+include_directories(src)
 
 qt_add_resources(RCCApp "configuration"
     PREFIX "/"

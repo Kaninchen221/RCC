@@ -124,9 +124,9 @@ Switch {
             }
 
             StateChangeScript {
-                name: "SwitchOff"
+                name: "SwitchOn"
                 script: {
-                    root.switchOff()
+                    root.switchOn()
                 }
             }
         },
@@ -147,9 +147,9 @@ Switch {
             }
 
             StateChangeScript {
-                name: "SwitchOn"
+                name: "SwitchOff"
                 script: {
-                    root.switchOn()
+                    root.switchOff()
                 }
             }
         }
