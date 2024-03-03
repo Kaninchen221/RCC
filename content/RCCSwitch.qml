@@ -1,32 +1,36 @@
+
+
 /*
 This is a UI file (.ui.qml) that is intended to be edited in Qt Design Studio only.
 It is supposed to be strictly declarative and only uses a subset of QML. If you edit
 this file manually, you might introduce QML code that is not supported by Qt Design Studio.
 Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on .ui.qml files.
 */
-
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts
 
 Switch {
-    id: control
+    id: root
 
     implicitWidth: backgroundItem.implicitWidth
     implicitHeight: backgroundItem.implicitHeight
-
-    readonly property int baseSize: 12
     width: 200
     height: 100
+
+    readonly property int baseSize: 12
     property alias text1Text: text1.text
+
+    signal switchOn
+    signal switchOff
 
     background: backgroundItem
     Rectangle {
         id: backgroundItem
         color: "#ffffff"
         radius: 4
-        implicitWidth: control.baseSize * 6.0
-        implicitHeight: control.baseSize * 3.8
+        implicitWidth: root.baseSize * 6.0
+        implicitHeight: root.baseSize * 3.8
     }
 
     leftPadding: 4
@@ -49,10 +53,10 @@ Switch {
 
         Rectangle {
             id: switchHandle
-            implicitWidth: control.baseSize * 4.8
-            implicitHeight: control.baseSize * 2.6
+            implicitWidth: root.baseSize * 4.8
+            implicitHeight: root.baseSize * 2.6
             color: "#e9e9e9"
-            radius: control.baseSize * 1.3
+            radius: root.baseSize * 1.3
             anchors.verticalCenter: parent.verticalCenter
             Layout.fillWidth: false
             Layout.fillHeight: false
@@ -64,7 +68,7 @@ Switch {
                 width: 31.2
                 height: 31.2
 
-                radius: control.baseSize * 1.3
+                radius: root.baseSize * 1.3
                 anchors.verticalCenter: parent.verticalCenter
                 color: "#e9e9e9"
             }
@@ -73,7 +77,7 @@ Switch {
     states: [
         State {
             name: "off"
-            when: !control.checked && !control.down
+            when: !root.checked && !root.down
 
             PropertyChanges {
                 target: rectangle
@@ -88,7 +92,7 @@ Switch {
         },
         State {
             name: "on"
-            when: control.checked && !control.down
+            when: root.checked && !root.down
 
             PropertyChanges {
                 target: switchHandle
@@ -103,7 +107,7 @@ Switch {
         },
         State {
             name: "off_down"
-            when: !control.checked && control.down
+            when: !root.checked && root.down
 
             PropertyChanges {
                 target: rectangle
@@ -115,10 +119,17 @@ Switch {
                 color: "#00000000"
                 border.color: "#047eff"
             }
+
+            StateChangeScript {
+                name: "SwitchOff"
+                script: {
+                    root.switchOff()
+                }
+            }
         },
         State {
             name: "on_down"
-            when: control.checked && control.down
+            when: root.checked && root.down
 
             PropertyChanges {
                 target: rectangle
@@ -130,6 +141,13 @@ Switch {
                 target: switchHandle
                 color: "#b1047eff"
                 border.color: "#ffffff"
+            }
+
+            StateChangeScript {
+                name: "SwitchOn"
+                script: {
+                    root.switchOn()
+                }
             }
         }
     ]

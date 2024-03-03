@@ -8,6 +8,24 @@
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
 
+class RCCController : QObject
+{
+    QML_ELEMENT
+    QML_SINGLETON
+    RCCController() = default;
+
+public:
+
+    Q_INVOKABLE void startListening() {
+        qInfo("Start listening");
+    }
+
+    Q_INVOKABLE void stopListening() {
+        qInfo("Stop listening");
+    }
+
+};
+
 int main(int argc, char *argv[])
 {
     set_qt_environment();

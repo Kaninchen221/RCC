@@ -52,5 +52,8 @@ Rectangle {
         width: 159
         height: 107
         text1Text: "Listen"
+
+        onSwitchOn: console.log("Listen switch on")
+        onSwitchOff: console.log("Listen switch off")
     }
 }
