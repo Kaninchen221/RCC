@@ -1,13 +1,14 @@
 import QtQuick 6.2
 import QtQuick.Controls 6.2
 
-Pane {
-    id: pane
+Rectangle {
+    id: root
     property alias labelText: label.text
     property alias textInputText: textInput.text
     visible: true
-    contentHeight: 100
-    contentWidth: 300
+    radius: 4
+    //contentHeight: 100
+    //contentWidth: 300
 
     states: [
         State {
@@ -25,17 +26,16 @@ Pane {
         color: "#ffffff"
         radius: 4
         anchors.fill: parent
+        anchors.leftMargin: 12
+        anchors.rightMargin: 12
+        anchors.topMargin: 12
+        anchors.bottomMargin: 12
 
-        Flow {
-            id: flow1
+        Rectangle {
+            id: rectangle1
             x: 0
             y: 0
             anchors.fill: parent
-            bottomPadding: 12
-            rightPadding: 12
-            leftPadding: 12
-            topPadding: 12
-            flow: Flow.LeftToRight
 
             Text {
                 id: label
