@@ -18,48 +18,39 @@ Rectangle {
 
     color: Constants.backgroundColor
 
-    InputBox {
-        id: address2
-        x: 243
-        y: 315
-        width: 271
-        height: 103
-        textInput1Text: "192.168.1.101"
+    RCCInputBox {
+        id: addressInputBox
+        x: 445
+        y: 233
+        width: 324
+        height: 107
+        textInputText: "192.168.1.101"
     }
 
-    InputBox {
-        id: port2
-        x: 520
-        y: 315
-        width: 271
-        height: 103
-        textInput1Text: "5000"
-        text1Text: "Port"
+    RCCInputBox {
+        id: portInputBox
+        x: 775
+        y: 233
+        width: 324
+        height: 107
+        textInputText: "5000"
+        labelText: "Port"
     }
 
-    SimpleStatus {
-        id: listetningStatus
-        height: 103
-        width: 295
-        x: 954
-        y: 315
+    RCCSimpleStatus {
+        id: listeningSimpleStatus
+        x: 1270
+        y: 233
+        width: 300
+        height: 107
     }
 
-    Rectangle {
-        id: rectangle2
-        x: 797
-        y: 315
-        width: 151
-        height: 103
-        color: "#ffffff"
-        radius: 4
-
-        Button {
-            id: button
-            text: qsTr("Listen")
-            anchors.fill: parent
-            font.pointSize: 20
-            flat: true
-        }
+    RCCSwitch {
+        id: listenSwitch
+        x: 1105
+        y: 233
+        width: 159
+        height: 107
+        text1Text: "Listen"
     }
 }

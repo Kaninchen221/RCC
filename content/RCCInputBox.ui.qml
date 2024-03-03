@@ -3,8 +3,8 @@ import QtQuick.Controls 6.2
 
 Pane {
     id: pane
-    property alias text1Text: label.text
-    property alias textInput1Text: textInput.text
+    property alias labelText: label.text
+    property alias textInputText: textInput.text
     visible: true
     contentHeight: 100
     contentWidth: 300
@@ -39,7 +39,6 @@ Pane {
 
             Text {
                 id: label
-                color: Style.TextColor
                 text: qsTr("Address")
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -77,7 +76,7 @@ Pane {
                         visible: false
                         color: "#000000"
                         anchors.fill: parent
-                        anchors.topMargin: 47
+                        anchors.topMargin: 66
                         layer.enabled: false
                         enabled: true
                     }
