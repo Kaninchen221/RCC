@@ -47,8 +47,11 @@ Switch {
             id: text1
             text: qsTr("SwitchText")
             font.pixelSize: 24
-            anchors.horizontalCenterOffset: 1
-            anchors.horizontalCenter: parent.horizontalCenter
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignTop
+            Layout.fillHeight: false
+            Layout.fillWidth: false
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
         }
 
         Rectangle {
@@ -57,11 +60,11 @@ Switch {
             implicitHeight: root.baseSize * 2.6
             color: "#e9e9e9"
             radius: root.baseSize * 1.3
-            anchors.verticalCenter: parent.verticalCenter
+            Layout.bottomMargin: 5
             Layout.fillWidth: false
             Layout.fillHeight: false
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            anchors.verticalCenterOffset: 15
+            Layout.row: 2
 
             Rectangle {
                 id: rectangle
