@@ -22,16 +22,16 @@ Rectangle {
         id: addressInputBox
         x: 445
         y: 233
-        width: 324
+        width: 254
         height: 107
         textInputText: "192.168.1.101"
     }
 
     RCCInputBox {
         id: portInputBox
-        x: 775
+        x: 705
         y: 233
-        width: 324
+        width: 150
         height: 107
         textInputText: "5000"
         labelText: "Port"
@@ -39,7 +39,7 @@ Rectangle {
 
     RCCSimpleStatus {
         id: listeningSimpleStatus
-        x: 1270
+        x: 1009
         y: 233
         width: 300
         height: 107
@@ -47,19 +47,19 @@ Rectangle {
 
     RCCSwitch {
         id: listenSwitch
-        x: 1105
+        x: 861
         y: 233
-        width: 159
+        width: 142
         height: 107
         text1Text: "Listen"
 
         onSwitchOn: {
             RCCController.startListening()
-            console.log("Listen switch on")
+            //console.log("Listen switch on")
         }
         onSwitchOff: {
             RCCController.stopListening()
-            console.log("Listen switch off")
+            //console.log("Listen switch off")
         }
     }
 }

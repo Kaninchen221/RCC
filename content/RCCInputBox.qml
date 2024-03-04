@@ -5,6 +5,8 @@ Rectangle {
     id: root
     property alias labelText: label.text
     property alias textInputText: textInput.text
+    width: 400
+    height: 200
     visible: true
     radius: 4
     //contentHeight: 100
@@ -73,10 +75,14 @@ Rectangle {
 
                     Rectangle {
                         id: underscore
+                        y: 146
+                        height: 2
                         visible: false
                         color: "#000000"
-                        anchors.fill: parent
-                        anchors.topMargin: 66
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: 0
                         layer.enabled: false
                         enabled: true
                     }
