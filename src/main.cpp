@@ -17,6 +17,12 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
+    QQmlContext* qmlRootContext = engine.rootContext();
+
+    RCCController rccController;
+    qmlRootContext->setContextProperty("RCCController", &rccController);
+
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
     QObject::connect(
         &engine,
@@ -32,11 +38,6 @@ int main(int argc, char *argv[])
     engine.addImportPath(":/");
 
     engine.load(url);
-
-    QQmlContext* qmlRootContext = engine.rootContext();
-
-    RCCController rccController;
-    qmlRootContext->setContextProperty("RCCController", &rccController);
 
     if (engine.rootObjects().isEmpty()) {
         return -1;

@@ -2,11 +2,13 @@ import QtQuick 6.2
 import QtQuick.Layouts
 
 Rectangle {
-    id: rectangle1
+    id: root
     width: 300
     height: 100
     color: "#ffffff"
     radius: 4
+
+    property bool status: false
 
     GridLayout {
         id: gridLayout
@@ -31,14 +33,14 @@ Rectangle {
             id: stackLayout
             width: 100
             height: 100
-            currentIndex: 0
+            currentIndex: root.status
             Layout.fillHeight: true
             Layout.fillWidth: true
 
             Text {
-                id: firstState
+                id: invalidState
                 width: 200
-                color: "#000000"
+                color: "#ff0000"
                 text: qsTr("Not Listening")
                 font.pixelSize: 24
                 horizontalAlignment: Text.AlignHCenter
@@ -48,10 +50,10 @@ Rectangle {
             }
 
             Text {
-                id: secondState
+                id: validState
                 width: 200
                 height: 100
-                color: "#000000"
+                color: "#b5cb00"
                 text: qsTr("Listening")
                 font.pixelSize: 24
                 horizontalAlignment: Text.AlignHCenter

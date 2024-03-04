@@ -24,7 +24,7 @@ Rectangle {
         y: 233
         width: 254
         height: 107
-        textInputText: "192.168.1.101"
+        inputText: "192.168.1.101"
     }
 
     RCCInputBox {
@@ -33,7 +33,7 @@ Rectangle {
         y: 233
         width: 150
         height: 107
-        textInputText: "5000"
+        inputText: "5000"
         labelText: "Port"
     }
 
@@ -54,12 +54,43 @@ Rectangle {
         text1Text: "Listen"
 
         onSwitchOn: {
-            RCCController.startListening()
-            //console.log("Listen switch on")
+            RCCController.startListening(addressInputBox.inputText,
+                                         portInputBox.inputText)
+            listeningSimpleStatus.status = RCCController.isListening
+            console.log("Listen switch on")
         }
         onSwitchOff: {
             RCCController.stopListening()
-            //console.log("Listen switch off")
+            listeningSimpleStatus.status = RCCController.isListening
+            console.log("Listen switch off")
+        }
+    }
+
+    Button {
+        id: button
+        x: 1329
+        y: 261
+        text: qsTr("Send to all test message")
+
+        onClicked: {
+            RCCController.sendToAll("Hello from RCCController");
+        }
+    }
+
+    Rectangle {
+        id: rectangle
+        x: 445
+        y: 346
+        width: 864
+        height: 450
+        color: "#ffffff"
+
+        Component.onCompleted: {
+            RCCController.onNewConnection.connect(createConnectionEntry)
+        }
+
+        function createConnectionEntry(connection) {
+            console.log(connection)
         }
     }
 }

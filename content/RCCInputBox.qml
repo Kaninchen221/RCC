@@ -4,7 +4,7 @@ import QtQuick.Controls 6.2
 Rectangle {
     id: root
     property alias labelText: label.text
-    property alias textInputText: textInput.text
+    property alias inputText: textInput.text
     width: 400
     height: 200
     visible: true
