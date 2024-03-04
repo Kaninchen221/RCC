@@ -3,6 +3,7 @@
 
 import QtQuick 6.2
 import RCC
+import QtQuick.Controls 6.2
 
 Window {
     width: mainScreen.width
