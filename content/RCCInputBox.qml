@@ -3,8 +3,11 @@ import QtQuick.Controls 6.2
 
 Rectangle {
     id: root
+
     property alias labelText: label.text
     property alias inputText: textInput.text
+    property alias editable: textInput.readOnly
+
     width: 400
     height: 200
     visible: true
