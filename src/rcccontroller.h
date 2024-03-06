@@ -27,7 +27,7 @@ public slots:
     Q_INVOKABLE void sendToAll(const QString& message);
 
 signals:
-    void onNewConnection(QTcpSocket* newConnection);
+    void onNewConnection(const QString& address, const quint16& port);
 
 protected:
 

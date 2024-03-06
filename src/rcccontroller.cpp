@@ -46,6 +46,6 @@ void RCCController::gatherConnections() {
     {
         QTcpSocket* connection = tcpServer.nextPendingConnection();
         connections.push_back(connection);
-        emit onNewConnection(connection);
+        emit onNewConnection(connection->localAddress().toString(), connection->localPort());
     }
 }

@@ -66,21 +66,51 @@ Rectangle {
         }
     }
 
-    RCCDebugMenu {
-        id: debug
-        x: 1421
-        y: 257
-        width: 268
-        height: 189
+    Button {
+        id: button
+        x: 1329
+        y: 261
+        text: qsTr("Send to all test message")
+
+        onClicked: {
+            RCCController.sendToAll("Hello from RCCController");
+        }
     }
 
     RCCListOfConnections {
         id: listOfConnections
         x: 445
         y: 346
-        width: 864
-        height: 593
-    }
+        
+        Component.onCompleted: {
+            RCCController.onNewConnection.connect(newConnection)
+        }
 
+        property var lastCreatedComponent;
+
+        function newConnection(address, port) {
+            console.log("New connection arrived!")
+            console.log(`${address} ${port}`);
+            createConnectionEntry(address, port)
+        }
+
+        function createConnectionEntry(address, port) {
+            lastCreatedComponent = Qt.createComponent("RCCConnectionInfo.qml", listOfConnections.container)
+            if (lastCreatedComponent.status === Component.Ready)
+                finishConnectionEntry()
+            else
+                lastCreatedComponent.statusChanged.connect(finishCreation);
+        }
+            
+        function finishConnectionEntry()
+        {
+            if (lastCreatedComponent.status === Component.Ready) {
+                lastCreatedComponent.width = listOfConnections.container.width
+            }
+            else if (lastCreatedComponent.status === Component.Error) {
+                console.log("Error loading component:", lastCreatedComponent.errorString());
+            }
+        }
+    }
 
 }

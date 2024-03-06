@@ -12,4 +12,7 @@ qt6_add_qml_module(content
     RESOURCES
         fonts/fonts.txt
         QML_FILES RCCInputBox.qml RCCSimpleStatus.qml RCCSwitch.qml
+        QML_FILES RCCListOfConnections.qml
+        QML_FILES RCCConnectionInfo.qml
+        QML_FILES RCCDebugMenu.qml
 )
