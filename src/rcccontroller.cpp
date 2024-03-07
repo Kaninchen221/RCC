@@ -2,7 +2,10 @@
 
 RCCController::RCCController(QObject *parent)
     : QObject{parent}
-{}
+{
+    connect(&tcpServer, &QTcpServer::newConnection, this,
+            [this]() { gatherConnections(); });
+}
 
 void RCCController::startListening(const QString& address, const QString& port) {
     qInfo("Start listening");
@@ -12,8 +15,6 @@ void RCCController::startListening(const QString& address, const QString& port) 
     if (tcpServer.listen(hostAddress, hostPort))
     {
         qInfo("TcpServer started listening");
-        connect(&tcpServer, &QTcpServer::newConnection, this,
-                [this]() { gatherConnections(); });
     }
     else
     {
@@ -45,7 +46,24 @@ void RCCController::gatherConnections() {
     if (tcpServer.hasPendingConnections())
     {
         QTcpSocket* connection = tcpServer.nextPendingConnection();
+
+        connect(connection, &QTcpSocket::disconnected, this, [this]() { socketDisconnected(); });
+
         connections.push_back(connection);
         emit onNewConnection(connection->localAddress().toString(), connection->localPort());
     }
+}
+
+void RCCController::socketDisconnected()
+{
+    QTcpSocket* senderObject = qobject_cast<QTcpSocket*>(sender());
+    qsizetype index = 0;
+    for (QTcpSocket* socket : connections) {
+        if (socket == senderObject)
+            break;
+        ++index;
+    }
+    connections.removeAt(index);
+
+    emit onConnectionDisconnected(senderObject->localAddress().toString(), senderObject->localPort());
 }

@@ -28,10 +28,12 @@ public slots:
 
 signals:
     void onNewConnection(const QString& address, const quint16& port);
+    void onConnectionDisconnected(const QString& address, const quint16& port);
 
 protected:
 
     void gatherConnections();
+    void socketDisconnected();
 
     QTcpServer tcpServer;
     QList<QTcpSocket*> connections;
