@@ -4,6 +4,7 @@ option(LINK_INSIGHT "Link Qt Insight Tracker library" ON)
 option(BUILD_QDS_COMPONENTS "Build design studio components" ON)
 
 project(RCCApp LANGUAGES CXX)
+set (CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_AUTOMOC ON)
 
