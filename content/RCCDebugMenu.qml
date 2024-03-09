@@ -3,7 +3,7 @@ import QtQuick.Controls 6.2
 
 Item {
     id: debug
-    width: 200
+    width: 220
     height: 200
 
     Button {
@@ -24,9 +24,18 @@ Item {
         text: qsTr("New connection")
 
         onClicked: {
-            for (let i = 0; i < 5; i++) {
-                listOfConnections.newConnection("TestAddress", "TestPort")
-            }
+            listOfConnections.newConnection("TestAddress", "TestPort")
+        }
+    }
+
+    Button {
+        id: connectionDisconnectedDebug
+        x: 0
+        y: 116
+        text: qsTr("Connection disconnected")
+
+        onClicked: {
+            listOfConnections.connectionDisconnected("TestAddress", "TestPort")
         }
     }
 }

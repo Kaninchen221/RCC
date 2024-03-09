@@ -10,11 +10,11 @@ Rectangle {
 
     Component.onCompleted: {
         RCCController.onNewConnection.connect(newConnection)
+        RCCController.onConnectionDisconnected.connect(connectionDisconnected)
     }
 
     function newConnection(address, port) {
-        console.log("New connection arrived!")
-        console.log(`${address} ${port}`);
+        console.log(`New connection arrived! ${address} ${port}`)
         listOfConnections.addConnectionInfo(address, port)
     }
 
@@ -35,6 +35,17 @@ Rectangle {
         scrollView.contentHeight = totalHeight
     }
 
+    function connectionDisconnected(address, port) {
+        console.log(`Connection disconnected! ${address} ${port}`)
+        for(var i = 0; i < grid.children.length; ++i) {
+            var child = grid.children[i]
+            if (String(child.addressText) === String(address) && String(child.portText) === String(port)) {
+                child.destroy()
+                break
+            }
+        }
+    }
+
     ScrollView {
         id: scrollView
         anchors.fill: parent
@@ -43,7 +54,7 @@ Rectangle {
         Grid {
             id: grid
             anchors.fill: parent
-            rows: 999
+            rows: 100
             columns: 1
         }
     }
