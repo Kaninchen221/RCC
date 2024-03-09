@@ -6,14 +6,15 @@ import RCC
 import QtQuick.Controls 6.2
 
 Window {
-    width: mainScreen.width
-    height: mainScreen.height
+    width: 1920
+    height: 1080
 
     visible: true
     title: "RCC"
 
     Screen01 {
         id: mainScreen
+        anchors.fill: parent
     }
 
 }

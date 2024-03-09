@@ -18,76 +18,96 @@ Rectangle {
 
     color: Constants.backgroundColor
 
-    RCCInputBox {
-        id: addressInputBox
-        x: 445
-        y: 233
-        width: 254
-        height: 107
-        inputText: "192.168.1.101"
-    }
+    GridLayout {
+        id: gridLayout
+        anchors.fill: parent
+        anchors.margins: 20
+        layoutDirection: Qt.LeftToRight
+        flow: GridLayout.LeftToRight
+        rowSpacing: 4
+        columnSpacing: 1
+        rows: 6
+        columns: 1
 
-    RCCInputBox {
-        id: portInputBox
-        x: 705
-        y: 233
-        width: 150
-        height: 107
-        inputText: "5000"
-        labelText: "Port"
-    }
+        RowLayout {
+            id: serverControllsLayout
+            Layout.minimumWidth: 620
+            Layout.minimumHeight: 100
+            spacing: 6
+            Layout.maximumHeight: 120
+            Layout.preferredHeight: 120
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+            Layout.fillWidth: true
 
-    RCCSimpleStatus {
-        id: listeningSimpleStatus
-        x: 1009
-        y: 233
-        width: 300
-        height: 107
-    }
+            RCCInputBox {
+                id: addressInputBox
+                Layout.minimumWidth: 200
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                inputText: "192.168.1.101"
+            }
 
-    RCCSwitch {
-        id: listenSwitch
-        x: 861
-        y: 233
-        width: 142
-        height: 107
-        text1Text: "Listen"
+            RCCInputBox {
+                id: portInputBox
+                Layout.minimumWidth: 100
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                inputText: "5000"
+                labelText: "Port"
+            }
 
-        onSwitchOn: {
-            console.log("Listen switch on")
-            RCCController.startListening(addressInputBox.inputText,
-                                         portInputBox.inputText)
-            informAboutIsListening()
+            RCCSwitch {
+                id: listenSwitch
+                Layout.minimumWidth: 100
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                text1Text: "Listen"
+
+                onSwitchOn: {
+                    console.log("Listen switch on")
+                    RCCController.startListening(addressInputBox.inputText,
+                                                 portInputBox.inputText)
+                    informAboutIsListening()
+                }
+                onSwitchOff: {
+                    console.log("Listen switch off")
+                    RCCController.stopListening()
+                    informAboutIsListening()
+                }
+
+                function informAboutIsListening() {
+                    listeningSimpleStatus.status = RCCController.isListening
+                    addressInputBox.editable = RCCController.isListening
+                    portInputBox.editable = RCCController.isListening
+
+                }
+            }
+
+            RCCSimpleStatus {
+                id: listeningSimpleStatus
+                Layout.minimumWidth: 220
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+            }
         }
-        onSwitchOff: {
-            console.log("Listen switch off")
-            RCCController.stopListening()
-            informAboutIsListening()
+
+        RCCListOfConnections {
+            id: listOfConnections
+            width: serverControllsLayout.width
+            Layout.minimumWidth: 300
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            Layout.fillHeight: true
+            Layout.fillWidth: true
         }
 
-        function informAboutIsListening() {
-            listeningSimpleStatus.status = RCCController.isListening
-            addressInputBox.editable = RCCController.isListening
-            portInputBox.editable = RCCController.isListening
-
+        RCCDebugMenu {
+            id: debug
+            width: 268
+            height: 189
         }
-    }
-
-    RCCDebugMenu {
-        id: debug
-        x: 1421
-        y: 257
-        width: 268
-        height: 189
-    }
-
-    RCCListOfConnections {
-        id: listOfConnections
-        x: 445
-        y: 346
-        width: 864
-        height: 593
     }
 
 
 }
+
+
