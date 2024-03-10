@@ -15,7 +15,8 @@ if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
 endif()
 
 qt_add_executable(RCCApp src/main.cpp
-    src/rcccontroller.h src/rcccontroller.cpp)
+    src/rcccontroller.h src/rcccontroller.cpp
+    src/rccconstants.h src/rccconstants.cpp)
 	
 # Fix: qml type regitrations : no such a file or directory
 include_directories(src)

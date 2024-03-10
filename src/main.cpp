@@ -8,6 +8,7 @@
 #include "app_environment.h"
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
+#include "rccconstants.h"
 #include "rcccontroller.h"
 
 int main(int argc, char *argv[])
@@ -22,6 +23,9 @@ int main(int argc, char *argv[])
 
     RCCController rccController;
     qmlRootContext->setContextProperty("RCCController", &rccController);
+
+    RCCConstants rccConstants;
+    qmlRootContext->setContextProperty("RCCConstants", &rccConstants);
 
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
     QObject::connect(

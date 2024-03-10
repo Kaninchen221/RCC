@@ -38,4 +38,12 @@ Item {
             listOfConnections.connectionDisconnected("TestAddress", "TestPort")
         }
     }
+
+    Component.onCompleted: {
+        if (!RCCConstants.IsDebugBuild)
+        {
+            visible = false
+            destroy()
+        }
+    }
 }
