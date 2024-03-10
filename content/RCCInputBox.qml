@@ -95,11 +95,8 @@ Rectangle {
                     id: textInput
                     x: 12
                     y: 12
+                    text: "Example Text"
                     anchors.fill: parent
-                    anchors.leftMargin: 12
-                    anchors.rightMargin: 12
-                    anchors.topMargin: 12
-                    anchors.bottomMargin: 12
                     font.pixelSize: 24
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter

@@ -31,11 +31,12 @@ Rectangle {
 
         RowLayout {
             id: serverControllsLayout
+            Layout.fillHeight: false
             Layout.minimumWidth: 620
-            Layout.minimumHeight: 100
+            Layout.minimumHeight: 90
             spacing: 6
             Layout.maximumHeight: 120
-            Layout.preferredHeight: 120
+            Layout.preferredHeight: 80
             Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
             Layout.fillWidth: true
 
