@@ -1,11 +1,12 @@
 import QtQuick 6.2
 import QtQuick.Layouts
+import RCC
 
 Rectangle {
     id: root
     width: 300
     height: 100
-    color: "#ffffff"
+    color: Constants.itemsPrimaryColor
     radius: 4
 
     property bool status: false
@@ -21,7 +22,7 @@ Rectangle {
             width: 100
             height: 85
             text: qsTr("Status:")
-            font.pixelSize: 24
+            font.pixelSize: Constants.textPrimarySize
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             Layout.fillHeight: true
@@ -40,9 +41,9 @@ Rectangle {
             Text {
                 id: invalidState
                 width: 200
-                color: "#ff0000"
+                color: Constants.textInvalidColor
                 text: qsTr("Not Listening")
-                font.pixelSize: 24
+                font.pixelSize: Constants.textPrimarySize
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 Layout.fillHeight: true
@@ -53,9 +54,9 @@ Rectangle {
                 id: validState
                 width: 200
                 height: 100
-                color: "#b5cb00"
+                color: Constants.textValidColor
                 text: qsTr("Listening")
-                font.pixelSize: 24
+                font.pixelSize: Constants.textPrimarySize
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 Layout.fillWidth: true

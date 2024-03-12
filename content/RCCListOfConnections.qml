@@ -1,11 +1,11 @@
 import QtQuick 6.2
 import QtQuick.Controls 6.2
 import QtQuick.Layouts
-
+import RCC
 
 Rectangle {
     id: root
-    color: "#ffffff"
+    color: Constants.itemsPrimaryColor
     radius: 4
 
     Component.onCompleted: {

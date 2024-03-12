@@ -1,5 +1,6 @@
 import QtQuick 6.2
 import QtQuick.Controls 6.2
+import RCC
 
 Rectangle {
     id: root
@@ -12,8 +13,6 @@ Rectangle {
     height: 200
     visible: true
     radius: 4
-    //contentHeight: 100
-    //contentWidth: 300
 
     states: [
         State {
@@ -28,7 +27,7 @@ Rectangle {
 
     Rectangle {
         id: rectangle
-        color: "#ffffff"
+        color: Constants.itemsPrimaryColor
         radius: 4
         anchors.fill: parent
         anchors.leftMargin: 12
@@ -49,7 +48,7 @@ Rectangle {
                 anchors.right: parent.right
                 anchors.leftMargin: 0
                 anchors.rightMargin: 0
-                font.pixelSize: 18
+                font.pixelSize: Constants.textSecondarySize
             }
 
             Pane {
@@ -68,7 +67,7 @@ Rectangle {
 
                 Rectangle {
                     id: textBackground
-                    color: "#3aa0a0a0"
+                    color: Constants.itemsSecondaryColor
                     radius: 4
                     anchors.fill: parent
                     anchors.leftMargin: 0
@@ -81,7 +80,7 @@ Rectangle {
                         y: 146
                         height: 2
                         visible: false
-                        color: "#000000"
+                        color: Constants.textUnderscoreColor
                         anchors.left: parent.left
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
@@ -97,7 +96,7 @@ Rectangle {
                     y: 12
                     text: "Example Text"
                     anchors.fill: parent
-                    font.pixelSize: 24
+                    font.pixelSize: Constants.textPrimarySize
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     selectByMouse: false

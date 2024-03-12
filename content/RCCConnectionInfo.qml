@@ -1,12 +1,13 @@
 import QtQuick 6.2
 import QtQuick.Layouts
+import RCC
 
 Rectangle {
     id: rectangle
 
     width: 300
     height: 100
-    color: "#00ffffff"
+    color: Constants.itemsPrimaryColor
 
     property alias addressText: address.text
     property alias portText: port.text
@@ -22,7 +23,7 @@ Rectangle {
             width: 100
             height: 85
             text: qsTr("Address")
-            font.pixelSize: 24
+            font.pixelSize: Constants.textPrimarySize
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             Layout.fillHeight: true
@@ -33,7 +34,7 @@ Rectangle {
             id: port
             width: 200
             text: qsTr("Port")
-            font.pixelSize: 24
+            font.pixelSize: Constants.textPrimarySize
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             Layout.fillHeight: true

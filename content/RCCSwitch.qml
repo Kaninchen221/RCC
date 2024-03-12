@@ -9,6 +9,7 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts
+import RCC
 
 Switch {
     id: root
@@ -27,7 +28,7 @@ Switch {
     background: backgroundItem
     Rectangle {
         id: backgroundItem
-        color: "#ffffff"
+        color: Constants.itemsPrimaryColor
         radius: 4
         implicitWidth: root.baseSize * 6.0
         implicitHeight: root.baseSize * 3.8
@@ -46,7 +47,7 @@ Switch {
         Text {
             id: text1
             text: qsTr("SwitchText")
-            font.pixelSize: 24
+            font.pixelSize: Constants.textPrimarySize
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignTop
             Layout.fillHeight: false
@@ -89,7 +90,7 @@ Switch {
 
             PropertyChanges {
                 target: switchHandle
-                color: "#00000000"
+                color: Constants.transparentColor
                 border.color: "#aeaeae"
             }
         },
@@ -119,7 +120,7 @@ Switch {
 
             PropertyChanges {
                 target: switchHandle
-                color: "#00000000"
+                color: Constants.transparentColor
                 border.color: "#047eff"
             }
 

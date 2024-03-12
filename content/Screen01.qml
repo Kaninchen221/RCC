@@ -21,7 +21,6 @@ Rectangle {
     GridLayout {
         id: gridLayout
         anchors.fill: parent
-        anchors.margins: 20
         layoutDirection: Qt.LeftToRight
         flow: GridLayout.LeftToRight
         rowSpacing: 4
