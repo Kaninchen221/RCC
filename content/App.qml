@@ -4,6 +4,7 @@
 import QtQuick 6.2
 import RCC
 import QtQuick.Controls 6.2
+import QtQuick.Layouts
 
 Window {
     width: 1920
@@ -12,9 +13,37 @@ Window {
     visible: true
     title: "RCC"
 
-    Screen01 {
-        id: mainScreen
+    color: Constants.backgroundColor
+
+    ColumnLayout {
+        id: columnLayout
         anchors.fill: parent
+        anchors.leftMargin: 10
+        anchors.rightMargin: 10
+        anchors.topMargin: 10
+        anchors.bottomMargin: 10
+        spacing: 10
+
+        RCCHeaderMenu {
+            id: headerMenu
+        }
+
+        StackLayout {
+            id: screens
+            width: 100
+            height: 100
+
+            RCCWelcomeScreen {
+                id: welcomeScreen
+            }
+
+            RCCServerAndConnections {
+                id: serverAndConnections
+                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                Layout.fillWidth: true
+            }
+        }
+
     }
 
 }

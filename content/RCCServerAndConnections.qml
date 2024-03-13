@@ -106,8 +106,6 @@ Rectangle {
             height: 189
         }
     }
-
-
 }
 
 

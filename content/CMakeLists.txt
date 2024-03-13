@@ -8,11 +8,14 @@ qt6_add_qml_module(content
     RESOURCE_PREFIX "/qt/qml"
     QML_FILES
         App.qml
-        Screen01.qml
     RESOURCES
         fonts/fonts.txt
         QML_FILES RCCInputBox.qml RCCSimpleStatus.qml RCCSwitch.qml
         QML_FILES RCCListOfConnections.qml
         QML_FILES RCCConnectionInfo.qml
         QML_FILES RCCDebugMenu.qml
+        QML_FILES RCCWelcomeScreen.qml
+        QML_FILES RCCHeaderMenuButton.qml
+        QML_FILES RCCHeaderMenu.qml
+        QML_FILES RCCServerAndConnections.qml
 )
