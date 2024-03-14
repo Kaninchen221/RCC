@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QTcpServer>
 #include <QTcpSocket>
+#include <QPointer>
 
 class RCCController : public QObject
 {
@@ -36,7 +37,7 @@ protected:
     void socketDisconnected();
 
     QTcpServer tcpServer;
-    QList<QTcpSocket*> connections;
+    QList<QPointer<QTcpSocket>> connections;
 
 };
 

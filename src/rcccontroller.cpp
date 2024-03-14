@@ -30,13 +30,16 @@ void RCCController::stopListening() {
 
 void RCCController::sendToAll(const QString &message)
 {
-    for (QTcpSocket* socket : connections)
+    for (auto& connection : connections)
     {
-        if (!socket->isValid() || !socket->isOpen())
+        if (!connection)
+            continue;
+
+        if (!connection->isValid() || !connection->isOpen())
             continue;
 
         std::string stdString = message.toStdString();
-        socket->write(stdString.c_str());
+        connection->write(stdString.c_str());
     }
 }
 
@@ -58,12 +61,14 @@ void RCCController::socketDisconnected()
 {
     QTcpSocket* senderObject = qobject_cast<QTcpSocket*>(sender());
     qsizetype index = 0;
-    for (QTcpSocket* socket : connections) {
-        if (socket == senderObject)
+    for (auto& connection : connections) {
+        if (connection == senderObject)
             break;
         ++index;
     }
-    connections.removeAt(index);
+    if (index >= connections.size())
+        return;
 
+    connections.removeAt(index);
     emit onConnectionDisconnected(senderObject->localAddress().toString(), senderObject->localPort());
 }
