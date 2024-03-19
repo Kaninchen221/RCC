@@ -28,7 +28,7 @@ void RCCController::stopListening() {
     tcpServer.close();
 }
 
-void RCCController::sendToAll(const QString &message)
+void RCCController::sendToAll(const QString& message)
 {
     for (auto& connection : connections)
     {
@@ -41,6 +41,8 @@ void RCCController::sendToAll(const QString &message)
         std::string stdString = message.toStdString();
         connection->write(stdString.c_str());
     }
+
+    emit onMessageSent(message);
 }
 
 void RCCController::gatherConnections() {
@@ -50,7 +52,8 @@ void RCCController::gatherConnections() {
     {
         QTcpSocket* connection = tcpServer.nextPendingConnection();
 
-        connect(connection, &QTcpSocket::disconnected, this, [this]() { socketDisconnected(); });
+        connect(connection, &QTcpSocket::disconnected, this, &RCCController::socketDisconnected);
+        connect(connection, &QTcpSocket::readyRead, this, &RCCController::socketHasSomeBytesToRead);
 
         connections.push_back(connection);
         emit onNewConnection(connection->localAddress().toString(), connection->localPort());
@@ -71,4 +74,12 @@ void RCCController::socketDisconnected()
 
     connections.removeAt(index);
     emit onConnectionDisconnected(senderObject->localAddress().toString(), senderObject->localPort());
+}
+
+void RCCController::socketHasSomeBytesToRead()
+{
+    QTcpSocket* connection = qobject_cast<QTcpSocket*>(sender());
+    QString message{connection->readAll()};
+
+    emit onMessageReceived(message);
 }

@@ -4,6 +4,8 @@ import RCC
 
 Rectangle {
     id: headerMenu
+    width: 600
+    height: 100
     color: Constants.itemsPrimaryColor
     radius: 4
 
@@ -17,7 +19,7 @@ Rectangle {
         anchors.fill: parent
         spacing: 0
 
-        readonly property var menus: ["Main Menu", "Server && Connections"]
+        readonly property var menus: ["Main Menu", "Server && Connections", "Log"]
 
         Repeater {
             id: repeater
@@ -30,6 +32,8 @@ Rectangle {
                 Layout.preferredHeight: parent.height
                 Layout.maximumHeight: parent.height
                 Layout.fillWidth: true
+                Layout.minimumWidth: 10
+                Layout.preferredWidth: 10
 
                 onClicked: {
                     screens.currentIndex = screenIndex

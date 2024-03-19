@@ -30,6 +30,7 @@ Window {
 
         StackLayout {
             id: screens
+            currentIndex: 2
             width: 100
             height: 100
 
@@ -38,9 +39,13 @@ Window {
             }
 
             RCCServerAndConnections {
-                id: serverAndConnections
+                id: serverAndConnectionsScreen
                 Layout.alignment: Qt.AlignLeft | Qt.AlignTop
                 Layout.fillWidth: true
+            }
+
+            RCCLog {
+                id: logScreen
             }
         }
 
