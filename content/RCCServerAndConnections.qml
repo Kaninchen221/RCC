@@ -15,8 +15,9 @@ Rectangle {
     id: root
     width: Constants.width
     height: Constants.height
-
     color: Constants.backgroundColor
+
+    readonly property var listOfConnections: listOfConnections
 
     GridLayout {
         id: gridLayout
@@ -98,12 +99,6 @@ Rectangle {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             Layout.fillHeight: true
             Layout.fillWidth: true
-        }
-
-        RCCDebugMenu {
-            id: debug
-            width: 268
-            height: 189
         }
     }
 }

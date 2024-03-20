@@ -9,6 +9,9 @@ Rectangle {
     radius: 4
     color: Constants.backgroundColor
 
+    readonly property var sentLog: sentLog
+    readonly property var receivedLog: receivedLog
+
     ColumnLayout {
         id: columnLayout
         width: parent.width
@@ -85,52 +88,6 @@ Rectangle {
                 }
             }
         }
-
-        RowLayout {
-            id: rowLayout1
-            width: 100
-            height: 100
-            visible: true
-
-            Button {
-                id: button
-                text: qsTr("AddToSent")
-
-                onClicked: {
-                    addLogMessage("NewMessage", sentLog)
-                }
-            }
-
-            Button {
-                id: button2
-                text: qsTr("SpamSent")
-
-                onClicked: {
-                    for (var i = 0; i < 50; i++)
-                        addLogMessage("NewMessage", sentLog)
-                }
-            }
-
-            Button {
-                id: button3
-                text: qsTr("AddToReceived")
-
-                onClicked: {
-                    addLogMessage("NewMessage", receivedLog)
-                }
-            }
-
-            Button {
-                id: button4
-                text: qsTr("SpamReceived")
-
-                onClicked: {
-                    for (var i = 0; i < 50; i++)
-                        addLogMessage("NewMessage", receivedLog)
-                }
-            }
-        }
-
     }
 
     Component.onCompleted: {

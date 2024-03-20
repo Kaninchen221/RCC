@@ -49,7 +49,7 @@ Rectangle {
     ScrollView {
         id: scrollView
         anchors.fill: parent
-        //ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+        ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
         Grid {
             id: grid

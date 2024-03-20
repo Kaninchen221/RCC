@@ -7,6 +7,7 @@ import QtQuick.Controls 6.2
 import QtQuick.Layouts
 
 Window {
+    id: rootWindow
     width: 1920
     height: 1080
 
@@ -30,7 +31,7 @@ Window {
 
         StackLayout {
             id: screens
-            currentIndex: 2
+            currentIndex: 0
             width: 100
             height: 100
 
@@ -40,16 +41,32 @@ Window {
 
             RCCServerAndConnections {
                 id: serverAndConnectionsScreen
-                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                Layout.fillWidth: true
             }
 
             RCCLog {
                 id: logScreen
             }
         }
-
     }
 
-}
+    Window {
+        width: 300
+        height: 300
+        visible: false
+        title: "Debug Menu"
 
+        RCCDebugMenu {
+            anchors.fill: parent
+            welcomeScreen: welcomeScreen
+            serverAndConnectionsScreen: serverAndConnectionsScreen
+            logScreen: logScreen
+        }
+
+        Component.onCompleted: {
+            if (RCCConstants.IsDebugBuild)
+            {
+                visible = true
+            }
+        }
+    }
+}
