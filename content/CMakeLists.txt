@@ -20,4 +20,6 @@ qt6_add_qml_module(content
         QML_FILES RCCServerAndConnections.qml
         QML_FILES RCCLog.qml
         QML_FILES RCCScrollableText.qml
+        QML_FILES RCCControl.qml
+        QML_FILES RCCDisplayButton.qml
 )

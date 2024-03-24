@@ -46,6 +46,10 @@ Window {
             RCCLog {
                 id: logScreen
             }
+
+            RCCControl {
+                id: controlScreen
+            }
         }
     }
 
