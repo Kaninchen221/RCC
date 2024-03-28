@@ -36,7 +36,10 @@ Rectangle {
                 Layout.preferredWidth: 10
 
                 onClicked: {
-                    screens.currentIndex = screenIndex
+                    if (RCCConstants.IsDebugBuild)
+                        screens.currentIndex = screenIndex + 1
+                    else
+                        screens.currentIndex = screenIndex
                 }
             }
         }

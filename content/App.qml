@@ -29,11 +29,30 @@ Window {
             id: headerMenu
         }
 
-        StackLayout {
+        SwipeView {
             id: screens
-            currentIndex: 0
-            width: 100
-            height: 100
+            wheelEnabled: true
+            spacing: 5
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            currentIndex: 1
+
+            RCCDebugMenu {
+                id: debugScreen
+                welcomeScreen: welcomeScreen
+                serverAndConnectionsScreen: serverAndConnectionsScreen
+                logScreen: logScreen
+                visible: false
+
+                Component.onCompleted: {
+                    if (RCCConstants.IsDebugBuild) {
+                        visible = true
+                    }
+                    else {
+                        screens.removeItem(screens.itemAt(0))
+                    }
+                }
+            }
 
             RCCWelcomeScreen {
                 id: welcomeScreen
@@ -51,26 +70,11 @@ Window {
                 id: controlScreen
             }
         }
-    }
 
-    Window {
-        width: 300
-        height: 300
-        visible: false
-        title: "Debug Menu"
-
-        RCCDebugMenu {
-            anchors.fill: parent
-            welcomeScreen: welcomeScreen
-            serverAndConnectionsScreen: serverAndConnectionsScreen
-            logScreen: logScreen
-        }
-
-        Component.onCompleted: {
-            if (RCCConstants.IsDebugBuild)
-            {
-                visible = true
-            }
+        PageIndicator {
+            id: pageIndicator
+            count: screens.count
+            currentIndex: screens.currentIndex
         }
     }
 }

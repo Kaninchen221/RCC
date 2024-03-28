@@ -2,7 +2,7 @@ import QtQuick 6.2
 import QtQuick.Controls 6.2
 import QtQuick.Layouts
 
-ScrollView {
+Item {
     id: debug
     width: 220
     height: 500
