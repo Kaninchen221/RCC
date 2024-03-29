@@ -1,11 +1,12 @@
 import QtQuick 6.2
 import QtQuick.Controls 6.2
 import QtQuick.Layouts
+import RCC
 
 Item {
     id: debug
-    width: 220
-    height: 500
+    width: Constants.width
+    height: Constants.height
     property var welcomeScreen
     property var serverAndConnectionsScreen
     property var logScreen

@@ -37,6 +37,18 @@ Window {
             Layout.fillWidth: true
             currentIndex: 1
 
+            function informHeaderMenuAboutCurrentMenu() {
+                headerMenu.setCurrentMenu(currentIndex - RCCConstants.IsDebugBuild)
+            }
+
+            onCurrentIndexChanged: {
+                informHeaderMenuAboutCurrentMenu()
+            }
+
+            Component.onCompleted: {
+                informHeaderMenuAboutCurrentMenu()
+            }
+
             RCCDebugMenu {
                 id: debugScreen
                 welcomeScreen: welcomeScreen
@@ -69,12 +81,6 @@ Window {
             RCCControl {
                 id: controlScreen
             }
-        }
-
-        PageIndicator {
-            id: pageIndicator
-            count: screens.count
-            currentIndex: screens.currentIndex
         }
     }
 }

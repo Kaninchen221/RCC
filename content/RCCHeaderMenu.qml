@@ -44,4 +44,10 @@ Rectangle {
             }
         }
     }
+
+    function setCurrentMenu(index) {
+        for (let i = 0; i < repeater.count; i++) {
+            repeater.itemAt(i).setIsCurrentMenu(index === i)
+        }
+    }
 }
