@@ -1,6 +1,7 @@
 import QtQuick 6.2
 import RCC
 import QtQuick.Layouts
+import QtQuick.Controls 6.2
 
 Rectangle {
     id: root
@@ -8,54 +9,48 @@ Rectangle {
     height: Constants.height
     color: Constants.itemsPrimaryColor
     radius: 4
-    focus: true
 
-    readonly property string defaultText: "Press any button"
+    GridLayout {
+        id: gridLayout
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+        rowSpacing: 5
+        columnSpacing: 5
+        width: 800
+        height: 500
+        rows: 3
+        columns: 3
 
-    FocusScope {
-        id: focusScope
-        anchors.fill: parent
-        anchors.leftMargin: 0
-        anchors.rightMargin: 0
-        anchors.topMargin: 0
-        anchors.bottomMargin: 0
-        focus: true
-
-        Keys.onPressed: (event) => {
-            console.log("onPressed", event.key)
-            lastPressedButton.setText(event.text)
+        RCCButton {
+            text: qsTr("Up")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.row: 0
+            Layout.column: 1
         }
 
-        onActiveFocusChanged: {
-            if (!activeFocus) {
-                lastPressedButton.buttonText = defaultText
-            }
+        RCCButton {
+            text: qsTr("Left")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.row: 1
+            Layout.column: 0
         }
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: { focusScope.focus = true }
+        RCCButton {
+            text: qsTr("Right")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.row: 1
+            Layout.column: 2
+        }
 
-            RCCDisplayButton {
-                id: lastPressedButton
-                anchors.fill: parent
-                buttonText: defaultText
-            }
-
-            Text {
-                id: text1
-                text: "Click this window!"
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.top: parent.top
-                anchors.leftMargin: 0
-                anchors.rightMargin: 0
-                anchors.topMargin: 383
-                font.pixelSize: Constants.textPrimarySize
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                visible: !focusScope.activeFocus
-            }
+        RCCButton {
+            text: qsTr("Down")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.row: 2
+            Layout.column: 1
         }
     }
 }
