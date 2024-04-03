@@ -107,8 +107,8 @@ Rectangle {
         if (target.text[target.text.length - 1] === "\n")
             target.text = target.text.slice(0, -1);
 
-        var date = new Date();
-        var datetime = "["
+        let date = new Date();
+        let datetime = "["
                 + date.getHours() + ":"
                 + date.getMinutes() + ":"
                 + date.getSeconds() + ":"

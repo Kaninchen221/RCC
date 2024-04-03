@@ -69,7 +69,7 @@ Item {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
             onClicked: {
-                for (var i = 0; i < 50; i++)
+                for (let i = 0; i < 50; i++)
                     logScreen.addLogMessage("NewMessage", logScreen.sentLog)
             }
         }
@@ -90,7 +90,7 @@ Item {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
             onClicked: {
-                for (var i = 0; i < 50; i++)
+                for (let i = 0; i < 50; i++)
                     logScreen.addLogMessage("NewMessage", logScreen.receivedLog)
             }
         }

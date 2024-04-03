@@ -19,8 +19,8 @@ Rectangle {
     }
 
     function addConnectionInfo(address, port) {
-        var component = Qt.createComponent("RCCConnectionInfo.qml");
-        var connectionInfo = component.createObject(
+        let component = Qt.createComponent("RCCConnectionInfo.qml");
+        let connectionInfo = component.createObject(
                     grid,
                     {width: root.width, addressText: address, portText: port}
                     );
@@ -28,8 +28,8 @@ Rectangle {
     }
 
     function updateScrollViewContentHeight() {
-        var totalHeight = 0
-        for(var i = 0; i < grid.children.length; ++i) {
+        let totalHeight = 0
+        for(let i = 0; i < grid.children.length; ++i) {
             totalHeight += grid.children[i].height
         }
         scrollView.contentHeight = totalHeight
