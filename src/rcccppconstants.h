@@ -1,15 +1,15 @@
-#ifndef RCCCONSTANTS_H
-#define RCCCONSTANTS_H
+#ifndef RCCCPPCONSTANTS_H
+#define RCCCPPCONSTANTS_H
 
 #include <QObject>
 
-class RCCConstants : public QObject
+class RCCCPPConstants : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool IsDebugBuild READ isDebugBuild CONSTANT)
 
 public:
-    explicit RCCConstants(QObject *parent = nullptr);
+    explicit RCCCPPConstants(QObject *parent = nullptr);
 
     bool isDebugBuild() const { return bIsDebugBuild; }
 
@@ -23,4 +23,4 @@ private:
 
 };
 
-#endif // RCCCONSTANTS_H
+#endif // RCCCPPCONSTANTS_H

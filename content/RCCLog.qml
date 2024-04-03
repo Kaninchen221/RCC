@@ -91,8 +91,8 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        RCCController.onMessageReceived.connect(messageReceived)
-        RCCController.onMessageSent.connect(messageSent)
+        RCC_Controller.onMessageReceived.connect(messageReceived)
+        RCC_Controller.onMessageSent.connect(messageSent)
     }
 
     function messageReceived(message) {

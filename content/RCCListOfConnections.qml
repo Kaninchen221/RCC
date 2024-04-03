@@ -9,8 +9,8 @@ Rectangle {
     radius: 4
 
     Component.onCompleted: {
-        RCCController.onNewConnection.connect(newConnection)
-        RCCController.onConnectionDisconnected.connect(connectionDisconnected)
+        RCC_Controller.onNewConnection.connect(newConnection)
+        RCC_Controller.onConnectionDisconnected.connect(connectionDisconnected)
     }
 
     function newConnection(address, port) {
@@ -37,8 +37,8 @@ Rectangle {
 
     function connectionDisconnected(address, port) {
         console.log(`Connection disconnected! ${address} ${port}`)
-        for(var i = 0; i < grid.children.length; ++i) {
-            var child = grid.children[i]
+        for(let i = 0; i < grid.children.length; ++i) {
+            let child = grid.children[i]
             if (String(child.addressText) === String(address) && String(child.portText) === String(port)) {
                 child.destroy()
                 break

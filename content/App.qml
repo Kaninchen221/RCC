@@ -38,7 +38,7 @@ Window {
             currentIndex: 1
 
             function informHeaderMenuAboutCurrentMenu() {
-                headerMenu.setCurrentMenu(currentIndex - RCCConstants.IsDebugBuild)
+                headerMenu.setCurrentMenu(currentIndex - RCC_CPP_Constants.IsDebugBuild)
             }
 
             onCurrentIndexChanged: {
@@ -57,7 +57,7 @@ Window {
                 visible: false
 
                 Component.onCompleted: {
-                    if (RCCConstants.IsDebugBuild) {
+                    if (RCC_CPP_Constants.IsDebugBuild) {
                         visible = true
                     }
                     else {
