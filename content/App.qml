@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 
 import QtQuick 6.2
-import RCC
 import QtQuick.Controls 6.2
 import QtQuick.Layouts
+import RCC
 
 Window {
     id: rootWindow

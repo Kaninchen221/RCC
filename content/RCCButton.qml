@@ -1,5 +1,6 @@
 import QtQuick 6.2
 import QtQuick.Controls 6.2
+import RCC
 
 Rectangle {
     id: root
@@ -14,6 +15,7 @@ Rectangle {
         id: internalButton
         anchors.fill: parent
         text: "Up"
+        font.pixelSize: Constants.textPrimarySize
 
         function setIsCurrentMenu(isCurrentMenu) {
             root.down = isCurrentMenu
