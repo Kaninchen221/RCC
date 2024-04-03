@@ -16,7 +16,7 @@ endif()
 
 qt_add_executable(RCCApp src/main.cpp
     src/rcccontroller.h src/rcccontroller.cpp
-    src/rccconstants.h src/rccconstants.cpp)
+    src/rcccppconstants.h src/rcccppconstants.cpp)
 	
 # Fix: qml type regitrations : no such a file or directory
 include_directories(src)
