@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import RCC
 
 Rectangle {
-    id: headerMenu
+    id: root
     width: 600
     height: 100
     color: Constants.itemsPrimaryColor
@@ -13,6 +13,8 @@ Rectangle {
     Layout.minimumHeight: 20
     Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
     Layout.fillWidth: true
+
+    signal indexChanged(index: int)
 
     RowLayout {
         id: rowLayout
@@ -36,10 +38,13 @@ Rectangle {
                 Layout.preferredWidth: 10
 
                 onClicked: {
-                    if (RCC_CPP_Constants.IsDebugBuild)
+                   if (RCC_CPP_Constants.IsDebugBuild) {
                         screens.currentIndex = screenIndex + 1
-                    else
+                    }
+                    else {
                         screens.currentIndex = screenIndex
+                    }
+                    root.indexChanged(screens.currentIndex)
                 }
             }
         }
@@ -49,5 +54,8 @@ Rectangle {
         for (let i = 0; i < repeater.count; i++) {
             repeater.itemAt(i).setIsCurrentMenu(index === i)
         }
+        root.indexChanged(screens.currentIndex)
     }
+
+    function getMenus() { return rowLayout.menus }
 }

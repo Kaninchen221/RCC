@@ -8,13 +8,17 @@ import RCC
 
 Window {
     id: rootWindow
-    width: 1920
-    height: 1080
+    width: 1280
+    height: 800
 
     visible: true
     title: "RCC"
 
     color: Constants.backgroundColor
+
+    Component.onCompleted: {
+        visibility = RCC_CPP_Constants.IsSteamdeck ? Window.FullScreen : Window.Windowed
+    }
 
     ColumnLayout {
         id: columnLayout

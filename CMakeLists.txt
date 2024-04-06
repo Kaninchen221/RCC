@@ -54,3 +54,7 @@ install(TARGETS RCCApp
 # make IDEs aware of the QML import path
 set(QML_IMPORT_PATH ${PROJECT_BINARY_DIR}/qml CACHE PATH
     "Path to the custom QML components defined by the project")
+
+if (STEAMDECK)
+    add_definitions("-DSTEAMDECK")
+endif()

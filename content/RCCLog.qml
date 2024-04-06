@@ -42,7 +42,7 @@ Rectangle {
                     Text {
                         id: text1
                         text: qsTr("Sent")
-                        font.pixelSize: 12
+                        font.pixelSize: Constants.textSecondarySize
                         horizontalAlignment: Text.AlignHCenter
                         Layout.fillWidth: true
                     }
@@ -70,7 +70,7 @@ Rectangle {
                     Text {
                         id: text2
                         text: qsTr("Received")
-                        font.pixelSize: 12
+                        font.pixelSize: Constants.textSecondarySize
                         horizontalAlignment: Text.AlignHCenter
                         Layout.fillWidth: true
                     }

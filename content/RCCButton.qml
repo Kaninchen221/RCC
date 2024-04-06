@@ -9,13 +9,20 @@ Rectangle {
     border.width: 1
     radius: 4
     border.color: "#424242"
+
     property alias text: internalButton.text
+
+    signal clicked()
 
     ToolButton {
         id: internalButton
         anchors.fill: parent
         text: "Up"
         font.pixelSize: Constants.textPrimarySize
+
+        onClicked: {
+            root.clicked()
+        }
 
         function setIsCurrentMenu(isCurrentMenu) {
             root.down = isCurrentMenu
