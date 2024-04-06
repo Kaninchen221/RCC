@@ -20,6 +20,11 @@ Window {
         visibility = RCC_CPP_Constants.IsSteamdeck ? Window.FullScreen : Window.Windowed
     }
 
+    HoverHandler {
+        acceptedPointerTypes: PointerDevice.Finger
+        cursorShape: Qt.BlankCursor
+    }
+
     ColumnLayout {
         id: columnLayout
         anchors.fill: parent
