@@ -8,7 +8,7 @@ set (CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick)
+find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick Test)
 
 if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
@@ -16,6 +16,7 @@ endif()
 
 # Subdirectories
 add_subdirectory(src/RCCLib)
+add_subdirectory(src/RCCLibTests)
 
 qt_add_executable(RCCApp src/main.cpp)
 
