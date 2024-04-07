@@ -14,12 +14,12 @@ if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
 endif()
 
-qt_add_executable(RCCApp src/main.cpp
-    src/rcccontroller.h src/rcccontroller.cpp
-    src/rcccppconstants.h src/rcccppconstants.cpp)
-	
-# Fix: qml type regitrations : no such a file or directory
-include_directories(src)
+# Subdirectories
+add_subdirectory(src/RCCLib)
+
+qt_add_executable(RCCApp src/main.cpp)
+
+target_include_directories(RCCApp PUBLIC src/RCCLib)
 
 qt_add_resources(RCCApp "configuration"
     PREFIX "/"
@@ -32,6 +32,7 @@ target_link_libraries(RCCApp PRIVATE
     Qt6::Gui
     Qt6::Qml
     Qt6::Quick
+	RCCLib
 )
 
 if (BUILD_QDS_COMPONENTS)
