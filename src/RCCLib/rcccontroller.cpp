@@ -1,10 +1,25 @@
 #include "rcccontroller.h"
 
+#include <QNetworkInterface>
+
 RCCController::RCCController(QObject *parent)
     : QObject{parent}
 {
     connect(&tcpServer, &QTcpServer::newConnection, this,
             [this]() { gatherConnections(); });
+}
+
+QHostAddress RCCController::findIPV4Address() const
+{
+    const QHostAddress localhost = QHostAddress(QHostAddress::LocalHost);
+    for (const QHostAddress& address : QNetworkInterface::allAddresses())
+    {
+        if (address.protocol() == QAbstractSocket::IPv4Protocol && address != localhost)
+        {
+            return address;
+        }
+    }
+    return QHostAddress();
 }
 
 void RCCController::startListening(const QString& address, const QString& port) {
@@ -51,6 +66,7 @@ void RCCController::gatherConnections() {
     if (tcpServer.hasPendingConnections())
     {
         QTcpSocket* connection = tcpServer.nextPendingConnection();
+        qDebug() << "New connection Address: " << connection->localAddress();
 
         connect(connection, &QTcpSocket::disconnected, this, &RCCController::socketDisconnected);
         connect(connection, &QTcpSocket::readyRead, this, &RCCController::socketHasSomeBytesToRead);

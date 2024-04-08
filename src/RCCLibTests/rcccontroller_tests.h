@@ -3,12 +3,22 @@
 
 #include <QTest>
 
+#include "rcccontroller.h"
+
 class RCCControllerTests : public QObject
 {
     Q_OBJECT
 
 private slots:
-    void placeholder();
+    void findIPV4Address_test();
+
+    void listening_test();
+
+    void sendToAll_test();
+
+private:
+
+    RCCController controller;
 
 };
 

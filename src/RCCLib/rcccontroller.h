@@ -19,6 +19,8 @@ public:
 
     bool isListening() const { return tcpServer.isListening(); }
 
+    QHostAddress findIPV4Address() const;
+
 public slots:
 
     Q_INVOKABLE void startListening(const QString& address, const QString& port);

@@ -8,7 +8,8 @@ class RCCCPPConstatnsTests : public QObject
     Q_OBJECT
 
 private slots:
-    void placeholder();
+    void isDebugBuild_test();
+    void isSteamdeck_test();
 
 };
 
