@@ -83,6 +83,10 @@ Window {
                 id: serverAndConnectionsScreen
             }
 
+            RCCHttpConfigScreen {
+                id: httpConfigScreen
+            }
+
             RCCLog {
                 id: logScreen
             }

@@ -21,7 +21,7 @@ Rectangle {
         anchors.fill: parent
         spacing: 0
 
-        readonly property var menus: ["Main Menu", "Server && Connections", "Log", "Control"]
+        readonly property var menus: ["Main Menu", "TCP Server", "HTTP", "Log", "Control"]
 
         Repeater {
             id: repeater

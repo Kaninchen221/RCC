@@ -23,4 +23,5 @@ qt6_add_qml_module(content
         QML_FILES RCCControl.qml
         QML_FILES RCCDisplayButton.qml
         QML_FILES RCCButton.qml
+        QML_FILES RCCHttpConfigScreen.qml
 )
