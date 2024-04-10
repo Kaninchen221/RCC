@@ -27,6 +27,19 @@ Rectangle {
             Layout.fillWidth: true
             Layout.row: 0
             Layout.column: 1
+
+            onClicked: {
+                console.log("Clicked Up")
+
+                let method = "GET"
+                let ip = "192.168.4.1"
+                let command = "{\"T\":1,\"L\":0.5,\"R\":0.5}"
+                let url = "http://" + ip + "/js?json=" + command
+                console.log("Requested url: ", url)
+                let request = new XMLHttpRequest();
+                request.open("GET", url);
+                request.send();
+            }
         }
 
         RCCButton {
