@@ -20,7 +20,7 @@ Rectangle {
     readonly property var listOfConnections: listOfConnections
 
     GridLayout {
-        id: gridLayout
+        id: gridLayou
         anchors.fill: parent
         layoutDirection: Qt.LeftToRight
         flow: GridLayout.LeftToRight

@@ -33,10 +33,24 @@ Rectangle {
 
                 let method = "GET"
                 let ip = "192.168.4.1"
-                let command = "{\"T\":1,\"L\":0.5,\"R\":0.5}"
+                let command = "{\"T\":1,\"L\":164,\"R\":164}"
                 let url = "http://" + ip + "/js?json=" + command
                 console.log("Requested url: ", url)
                 let request = new XMLHttpRequest();
+
+                request.onreadystatechange = function() {
+                    if (request.readyState === XMLHttpRequest.DONE) {
+                        let response = {
+                            status : request.status,
+                            headers : request.getAllResponseHeaders(),
+                            contentType : request.responseType,
+                            content : request.response
+                        };
+
+                        //callback(response);
+                    }
+                }
+
                 request.open("GET", url);
                 request.send();
             }
