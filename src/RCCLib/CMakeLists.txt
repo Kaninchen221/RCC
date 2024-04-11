@@ -1,8 +1,10 @@
 qt_add_library(RCCLib STATIC
-    rcccontroller.h
-    rcccontroller.cpp
-    rcccppconstants.h
-    rcccppconstants.cpp
+    rcontrollerbase.h
+    rcontrollerbase.cpp
+    rcontrollertcp.h
+    rcontrollertcp.cpp
+    rcppconstants.h
+    rcppconstants.cpp
 )
 
 target_link_libraries(RCCLib PUBLIC

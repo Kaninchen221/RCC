@@ -38,7 +38,7 @@ Rectangle {
                 Layout.preferredWidth: 10
 
                 onClicked: {
-                   if (RCC_CPP_Constants.IsDebugBuild) {
+                   if (RCPPConstants.IsDebugBuild) {
                         screens.currentIndex = screenIndex + 1
                     }
                     else {

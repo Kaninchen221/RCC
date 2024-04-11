@@ -1,28 +1,14 @@
-#include "rcccontroller.h"
+#include "rcontrollertcp.h"
 
-#include <QNetworkInterface>
-
-RCCController::RCCController(QObject *parent)
-    : QObject{parent}
+RControllerTCP::RControllerTCP(QObject *parent)
+    : RControllerBase{parent}
 {
     connect(&tcpServer, &QTcpServer::newConnection, this,
             [this]() { gatherConnections(); });
 }
 
-QHostAddress RCCController::findIPV4Address() const
+void RControllerTCP::startListening(const QString& address, const QString& port)
 {
-    const QHostAddress localhost = QHostAddress(QHostAddress::LocalHost);
-    for (const QHostAddress& address : QNetworkInterface::allAddresses())
-    {
-        if (address.protocol() == QAbstractSocket::IPv4Protocol && address != localhost)
-        {
-            return address;
-        }
-    }
-    return QHostAddress();
-}
-
-void RCCController::startListening(const QString& address, const QString& port) {
     qInfo("Start listening");
 
     QHostAddress hostAddress(address);
@@ -37,13 +23,14 @@ void RCCController::startListening(const QString& address, const QString& port) 
     }
 }
 
-void RCCController::stopListening() {
+void RControllerTCP::stopListening()
+{
     qInfo("Stop listening");
 
     tcpServer.close();
 }
 
-void RCCController::sendToAll(const QString& message)
+void RControllerTCP::sendToAll(const QString& message)
 {
     for (auto& connection : connections)
     {
@@ -60,7 +47,8 @@ void RCCController::sendToAll(const QString& message)
     emit onMessageSent(message);
 }
 
-void RCCController::gatherConnections() {
+void RControllerTCP::gatherConnections()
+{
     qInfo("Gather Connections");
 
     if (tcpServer.hasPendingConnections())
@@ -68,15 +56,15 @@ void RCCController::gatherConnections() {
         QTcpSocket* connection = tcpServer.nextPendingConnection();
         qDebug() << "New connection Address: " << connection->localAddress();
 
-        connect(connection, &QTcpSocket::disconnected, this, &RCCController::socketDisconnected);
-        connect(connection, &QTcpSocket::readyRead, this, &RCCController::socketHasSomeBytesToRead);
+        connect(connection, &QTcpSocket::disconnected, this, &RControllerTCP::socketDisconnected);
+        connect(connection, &QTcpSocket::readyRead, this, &RControllerTCP::socketHasSomeBytesToRead);
 
         connections.push_back(connection);
         emit onNewConnection(connection->localAddress().toString(), connection->localPort());
     }
 }
 
-void RCCController::socketDisconnected()
+void RControllerTCP::socketDisconnected()
 {
     QTcpSocket* senderObject = qobject_cast<QTcpSocket*>(sender());
     qsizetype index = 0;
@@ -92,7 +80,7 @@ void RCCController::socketDisconnected()
     emit onConnectionDisconnected(senderObject->localAddress().toString(), senderObject->localPort());
 }
 
-void RCCController::socketHasSomeBytesToRead()
+void RControllerTCP::socketHasSomeBytesToRead()
 {
     QTcpSocket* connection = qobject_cast<QTcpSocket*>(sender());
     QString message{connection->readAll()};

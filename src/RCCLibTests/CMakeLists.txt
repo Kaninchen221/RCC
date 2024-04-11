@@ -1,9 +1,11 @@
 qt_add_executable(RCCLibTests
 	main.cpp
-    rcccontroller_tests.h
-    rcccontroller_tests.cpp
-    rcccppconstants_tests.h
-    rcccppconstants_tests.cpp
+    rcontrollerbase_tests.h
+    rcontrollerbase_tests.cpp
+    rcontrollertcp_tests.h
+    rcontrollertcp_tests.cpp
+    rcppconstants_tests.h
+    rcppconstants_tests.cpp
 )
 
 target_link_libraries(RCCLibTests PUBLIC

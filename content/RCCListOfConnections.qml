@@ -9,8 +9,8 @@ Rectangle {
     radius: 4
 
     Component.onCompleted: {
-        RCC_Controller.onNewConnection.connect(newConnection)
-        RCC_Controller.onConnectionDisconnected.connect(connectionDisconnected)
+        RControllerTCP.onNewConnection.connect(newConnection)
+        RControllerTCP.onConnectionDisconnected.connect(connectionDisconnected)
     }
 
     function newConnection(address, port) {

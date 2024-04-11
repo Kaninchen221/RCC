@@ -17,7 +17,7 @@ Window {
     color: Constants.backgroundColor
 
     Component.onCompleted: {
-        visibility = RCC_CPP_Constants.IsSteamdeck ? Window.FullScreen : Window.Windowed
+        visibility = RCPPConstants.IsSteamdeck ? Window.FullScreen : Window.Windowed
     }
 
     HoverHandler {
@@ -47,7 +47,7 @@ Window {
             currentIndex: 1
 
             function informHeaderMenuAboutCurrentMenu() {
-                headerMenu.setCurrentMenu(currentIndex - RCC_CPP_Constants.IsDebugBuild)
+                headerMenu.setCurrentMenu(currentIndex - RCPPConstants.IsDebugBuild)
             }
 
             onCurrentIndexChanged: {
@@ -66,7 +66,7 @@ Window {
                 visible: false
 
                 Component.onCompleted: {
-                    if (RCC_CPP_Constants.IsDebugBuild) {
+                    if (RCPPConstants.IsDebugBuild) {
                         visible = true
                     }
                     else {

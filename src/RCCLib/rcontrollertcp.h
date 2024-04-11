@@ -1,5 +1,5 @@
-#ifndef RCCCONTROLLER_H
-#define RCCCONTROLLER_H
+#ifndef RCONTROLLERTCP_H
+#define RCONTROLLERTCP_H
 
 #include "qqmlintegration.h"
 #include <QObject>
@@ -7,7 +7,9 @@
 #include <QTcpSocket>
 #include <QPointer>
 
-class RCCController : public QObject
+#include "rcontrollerbase.h"
+
+class RControllerTCP : public RControllerBase
 {
     Q_OBJECT
     QML_ELEMENT
@@ -15,11 +17,9 @@ class RCCController : public QObject
     Q_PROPERTY(bool isListening READ isListening CONSTANT)
 
 public:
-    explicit RCCController(QObject *parent = nullptr);
+    explicit RControllerTCP(QObject *parent = nullptr);
 
     bool isListening() const { return tcpServer.isListening(); }
-
-    QHostAddress findIPV4Address() const;
 
 public slots:
 
@@ -46,4 +46,4 @@ protected:
 
 };
 
-#endif // RCCCONTROLLER_H
+#endif // RCONTROLLERTCP_H

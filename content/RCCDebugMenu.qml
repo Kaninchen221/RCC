@@ -25,7 +25,7 @@ Item {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
             onClicked: {
-                RCC_Controller.sendToAll("Hello from RCCController");
+                RControllerTCP.sendToAll("Hello from RCCController");
             }
         }
 

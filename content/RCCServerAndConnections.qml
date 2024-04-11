@@ -66,20 +66,20 @@ Rectangle {
 
                 onSwitchOn: {
                     console.log("Listen switch on")
-                    RCC_Controller.startListening(addressInputBox.inputText,
+                    RControllerTCP.startListening(addressInputBox.inputText,
                                                  portInputBox.inputText)
                     informAboutIsListening()
                 }
                 onSwitchOff: {
                     console.log("Listen switch off")
-                    RCC_Controller.stopListening()
+                    RControllerTCP.stopListening()
                     informAboutIsListening()
                 }
 
                 function informAboutIsListening() {
-                    listeningSimpleStatus.status = RCC_Controller.isListening
-                    addressInputBox.editable = RCC_Controller.isListening
-                    portInputBox.editable = RCC_Controller.isListening
+                    listeningSimpleStatus.status = RControllerTCP.isListening
+                    addressInputBox.editable = RControllerTCP.isListening
+                    portInputBox.editable = RControllerTCP.isListening
 
                 }
             }
