@@ -1,6 +1,7 @@
 #include "rcontrollerhttp_tests.h"
 
 #include <QSignalSpy>
+#include <QTest>
 
 void RControllerHTTPTests::setGetAddress_test()
 {

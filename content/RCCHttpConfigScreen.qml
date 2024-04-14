@@ -28,11 +28,11 @@ Rectangle {
             inputText: "192.168.4.1"
 
             Component.onCompleted: {
-                RControllerHTTP.setAddress(inputText);
+                RControllerHTTP.setAddress("${https://}inputText");
             }
 
             onInputTextChanged: {
-                RControllerHTTP.setAddress(inputText);
+                RControllerHTTP.setAddress("${https://}inputText");
             }
         }
     }

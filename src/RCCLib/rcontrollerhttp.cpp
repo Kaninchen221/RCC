@@ -35,7 +35,7 @@ void RControllerHTTP::sendRequest(const QString &request, const QString &method)
 {
     QNetworkRequest networkRequest;
     const QUrl url{address + request};
-    qDebug() << "Url: " << url;
+    qDebug() << "Url: " << address + request;
     networkRequest.setUrl(url);
     networkAccessManager.get(networkRequest);
 }

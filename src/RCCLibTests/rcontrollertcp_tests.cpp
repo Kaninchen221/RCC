@@ -1,5 +1,7 @@
 #include "rcontrollertcp_tests.h"
 
+#include <QTest>
+
 void RControllerTCPTests::listening_test()
 {
     const QHostAddress address = controllerTCP.findIPV4Address();
