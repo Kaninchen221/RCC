@@ -30,7 +30,7 @@ Rectangle {
 
             onClicked: {
                 console.log("Clicked Up")
-                sendEnginesRequest(255, 255)
+                root.sendEnginesRequest(255, 255)
             }
         }
 
@@ -43,7 +43,7 @@ Rectangle {
 
             onClicked: {
                 console.log("Clicked Left")
-                sendEnginesRequest(255, 0)
+                root.sendEnginesRequest(255, 0)
             }
         }
 
@@ -56,7 +56,7 @@ Rectangle {
 
             onClicked: {
                 console.log("Clicked Right")
-                sendEnginesRequest(0, 255)
+                root.sendEnginesRequest(0, 255)
             }
         }
 
@@ -69,13 +69,26 @@ Rectangle {
 
             onClicked: {
                 console.log("Clicked Down")
-                sendEnginesRequest(-255, -255)
+                root.sendEnginesRequest(-255, -255)
             }
         }
 
-        function sendEnginesRequest(LEngineValue, REngineValue) {
-            let request = `/js?json={"T":1,"L":${LEngineValue},"R":${REngineValue}}`
-            RControllerHTTP.sendRequest(request)
+        RCCButton {
+            text: qsTr("Stop")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.row: 1
+            Layout.column: 1
+
+            onClicked: {
+                console.log("Clicked Down")
+                root.sendEnginesRequest(0, 0)
+            }
         }
+    }
+
+    function sendEnginesRequest(LEngineValue, REngineValue) {
+        let request = `/js?json={"T":1,"L":${LEngineValue},"R":${REngineValue}}`
+        RControllerHTTP.sendRequest(request)
     }
 }
