@@ -25,14 +25,14 @@ Rectangle {
             Layout.minimumWidth: 200
             Layout.fillWidth: true
             Layout.fillHeight: true
-            inputText: "192.168.4.1"
+            inputText: "http://192.168.4.1"
 
             Component.onCompleted: {
-                RControllerHTTP.setAddress("${https://}inputText");
+                RControllerHTTP.setAddress(inputText);
             }
 
             onInputTextChanged: {
-                RControllerHTTP.setAddress("${https://}inputText");
+                RControllerHTTP.setAddress(inputText);
             }
         }
     }

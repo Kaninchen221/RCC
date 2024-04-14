@@ -10,6 +10,9 @@ Rectangle {
     color: Constants.itemsPrimaryColor
     radius: 4
 
+    property int maxEnginePWMSignal: 100
+    property int stopEnginePWMSignal: 0
+
     GridLayout {
         id: gridLayout
         anchors.verticalCenter: parent.verticalCenter
@@ -30,7 +33,7 @@ Rectangle {
 
             onClicked: {
                 console.log("Clicked Up")
-                root.sendEnginesRequest(255, 255)
+                root.sendEnginesRequest(root.maxEnginePWMSignal, root.maxEnginePWMSignal)
             }
         }
 
@@ -43,7 +46,7 @@ Rectangle {
 
             onClicked: {
                 console.log("Clicked Left")
-                root.sendEnginesRequest(255, 0)
+                root.sendEnginesRequest(root.maxEnginePWMSignal, root.stopEnginePWMSignal)
             }
         }
 
@@ -56,7 +59,7 @@ Rectangle {
 
             onClicked: {
                 console.log("Clicked Right")
-                root.sendEnginesRequest(0, 255)
+                root.sendEnginesRequest(root.stopEnginePWMSignal, root.maxEnginePWMSignal)
             }
         }
 
@@ -69,7 +72,7 @@ Rectangle {
 
             onClicked: {
                 console.log("Clicked Down")
-                root.sendEnginesRequest(-255, -255)
+                root.sendEnginesRequest(-root.maxEnginePWMSignal, -root.maxEnginePWMSignal)
             }
         }
 
@@ -82,7 +85,7 @@ Rectangle {
 
             onClicked: {
                 console.log("Clicked Down")
-                root.sendEnginesRequest(0, 0)
+                root.sendEnginesRequest(root.stopEnginePWMSignal, root.stopEnginePWMSignal)
             }
         }
     }
