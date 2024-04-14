@@ -10,6 +10,7 @@
 #include "import_qml_plugins.h"
 #include "rcppconstants.h"
 #include "rcontrollertcp.h"
+#include <rcontrollerhttp.h>
 
 int main(int argc, char *argv[])
 {
@@ -23,6 +24,9 @@ int main(int argc, char *argv[])
 
     RControllerTCP controllerTCP;
     qmlRootContext->setContextProperty("RControllerTCP", &controllerTCP);
+
+    RControllerHTTP controllerHTTP;
+    qmlRootContext->setContextProperty("RControllerHTTP", &controllerHTTP);
 
     RCPPConstants cppConstants;
     qmlRootContext->setContextProperty("RCPPConstants", &cppConstants);

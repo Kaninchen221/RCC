@@ -26,6 +26,14 @@ Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
             inputText: "192.168.4.1"
+
+            Component.onCompleted: {
+                RControllerHTTP.setAddress(inputText);
+            }
+
+            onInputTextChanged: {
+                RControllerHTTP.setAddress(inputText);
+            }
         }
     }
 

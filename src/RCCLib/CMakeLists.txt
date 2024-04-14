@@ -3,6 +3,8 @@ qt_add_library(RCCLib STATIC
     rcontrollerbase.cpp
     rcontrollertcp.h
     rcontrollertcp.cpp
+    rcontrollerhttp.h
+    rcontrollerhttp.cpp
     rcppconstants.h
     rcppconstants.cpp
 )

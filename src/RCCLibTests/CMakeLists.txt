@@ -4,6 +4,8 @@ qt_add_executable(RCCLibTests
     rcontrollerbase_tests.cpp
     rcontrollertcp_tests.h
     rcontrollertcp_tests.cpp
+    rcontrollerhttp_tests.h
+    rcontrollerhttp_tests.cpp
     rcppconstants_tests.h
     rcppconstants_tests.cpp
 )

@@ -30,29 +30,7 @@ Rectangle {
 
             onClicked: {
                 console.log("Clicked Up")
-
-                let method = "GET"
-                let ip = "192.168.4.1"
-                let command = "{\"T\":1,\"L\":164,\"R\":164}"
-                let url = "http://" + ip + "/js?json=" + command
-                console.log("Requested url: ", url)
-                let request = new XMLHttpRequest();
-
-                request.onreadystatechange = function() {
-                    if (request.readyState === XMLHttpRequest.DONE) {
-                        let response = {
-                            status : request.status,
-                            headers : request.getAllResponseHeaders(),
-                            contentType : request.responseType,
-                            content : request.response
-                        };
-
-                        //callback(response);
-                    }
-                }
-
-                request.open("GET", url);
-                request.send();
+                sendEnginesRequest(255, 255)
             }
         }
 
@@ -62,6 +40,11 @@ Rectangle {
             Layout.fillWidth: true
             Layout.row: 1
             Layout.column: 0
+
+            onClicked: {
+                console.log("Clicked Left")
+                sendEnginesRequest(255, 0)
+            }
         }
 
         RCCButton {
@@ -70,6 +53,11 @@ Rectangle {
             Layout.fillWidth: true
             Layout.row: 1
             Layout.column: 2
+
+            onClicked: {
+                console.log("Clicked Right")
+                sendEnginesRequest(0, 255)
+            }
         }
 
         RCCButton {
@@ -78,6 +66,16 @@ Rectangle {
             Layout.fillWidth: true
             Layout.row: 2
             Layout.column: 1
+
+            onClicked: {
+                console.log("Clicked Down")
+                sendEnginesRequest(-255, -255)
+            }
+        }
+
+        function sendEnginesRequest(LEngineValue, REngineValue) {
+            let request = `/js?json={"T":1,"L":${LEngineValue},"R":${REngineValue}}`
+            RControllerHTTP.sendRequest(request)
         }
     }
 }
